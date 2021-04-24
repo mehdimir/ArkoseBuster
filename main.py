@@ -45,7 +45,10 @@ with open ('captcha.wav', 'rb') as cap:
     res = stt.recognize(audio=cap, content_type='audio/wav', model='en-US_NarrowbandModel', continuous=True).get_result() #this does something
     captcharesult = res['results'][0]['alternatives'][0]['transcript']
     confidence = res['results'][0]['alternatives'][0]['confidence']
-    print('Captcha broken with ' + str(confidence) + ' confidence')
+    confidencestr = str(confidence)
+    confidencesplit = confidencestr.split('0.')
+    confidenceprint = confidencesplit[1]
+    print('Captcha broken with ' + confidenceprint + '% confidence')
     captcharesult = captcharesult.replace(' ', '')
     captcharesult = captcharesult.replace('one', '1')
     captcharesult = captcharesult.replace('two', '2')
