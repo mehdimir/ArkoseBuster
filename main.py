@@ -57,6 +57,7 @@ with open ('captcha.wav', 'rb') as cap:
     captcharesult = captcharesult.replace('eight', '8')
     captcharesult = captcharesult.replace('nine', '9')
     captcharesult = captcharesult.replace('zero', '0')
+    captcharesult = captcharesult.replace('%HESITATION', '')
     print('Captcha broken! The result is ' + captcharesult)
 
 driver.find_element_by_class_name('response_field.audio_response').send_keys(captcharesult)
